@@ -1,5 +1,7 @@
 # Use Express para Backend sem um Frontend
 
+## Deploy Netlify
+
 ## 1. Crie um novo projeto Express:
 
 1.1 crie a pasta
@@ -95,3 +97,5 @@ Crie o arquivo denominado _netlify.toml_ no diretorio _raiz_ do projeto e coloqu
 
 - Você pode acessar essas rotas a partir de outros serviços ou ferramentas para testar ou integrar com o seu backend.
 - As rotas são definidas apatir do arquivo **_api.ts_** localizado em **/netlify/functions/api.ts**
+
+documentação oficial acesse [netlify docs](https://docs.netlify.com/integrations/frameworks/express/)
