@@ -29,6 +29,7 @@ npm i express serverless-http @netlify/functions @types/express
 ## 3. Crie um arquivo de função Netlify para TypeScript ou JavaScript:
 
 **Detalhe:** neste arquivo contera as declarações de rotas a serem dimensionadas de acordo com sua necessidade e de acordo com tal ira ser acessivel em : **_https://url_projeto/api/SuaFunção_**
+
 Crie em o arquivo _api.ts_ ==> **"/netlify/functions/api.ts"** com os dados abaixo:
 
 ```Javascript
@@ -39,9 +40,15 @@ import serverless from "serverless-http";
 const api = express();
 
 const router = Router();
+//===============================================================
+//  Rotas a serem planejadas
+
 router.get("/hello", (req, res) => res.send("Hello World!"));
 
 api.use("/api/", router);
+
+// n_rotas . . .
+//===============================================================
 
 export const handler = serverless(api);
 
