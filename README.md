@@ -1,6 +1,10 @@
 # Use Express para Backend sem um Frontend
 
-## Deploy Netlify
+![img](imageReadme/imageREADME.png)
+
+## Netlify
+
+A Netlify é uma plataforma de hospedagem e automação projetada para simplificar o desenvolvimento, implantação e gerenciamento de aplicativos web modernos. Funcionando como uma solução de PaaS (Platform as a Service), a Netlify oferece aos desenvolvedores uma abordagem fácil e eficiente para hospedar sites, aplicativos e funções serverless.
 
 ## 1. Crie um novo projeto Express:
 
@@ -98,4 +102,4 @@ Crie o arquivo denominado _netlify.toml_ no diretorio _raiz_ do projeto e coloqu
 - Você pode acessar essas rotas a partir de outros serviços ou ferramentas para testar ou integrar com o seu backend.
 - As rotas são definidas apatir do arquivo **_api.ts_** localizado em **/netlify/functions/api.ts**
 
-documentação oficial acesse [netlify docs](https://docs.netlify.com/integrations/frameworks/express/)
+Documentação oficial acesse [netlify docs](https://docs.netlify.com/integrations/frameworks/express/)
