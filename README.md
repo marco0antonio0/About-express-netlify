@@ -36,7 +36,13 @@ npm i express serverless-http @netlify/functions @types/express
 
 **Detalhe:** neste arquivo contera as declarações de rotas a serem dimensionadas de acordo com sua necessidade e de acordo com tal ira ser acessivel em : **_https://url_projeto/api/SuaFunção_**
 
-Crie em o arquivo _api.ts_ ==> **"/netlify/functions/api.ts"** com os dados abaixo:
+Crie em o arquivo _api.ts_
+
+```bash
+/netlify/functions/api.ts
+```
+
+Cole os dados abaixo no diretorio especificado:
 
 ```Javascript
 
