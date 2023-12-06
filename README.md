@@ -2,27 +2,33 @@
 
 ## 1. Crie um novo projeto Express:
 
-1.1 crie e acesse a pasta
+1.1 crie a pasta
 
 ```bash
 mkdir my-express-backend
+```
+
+1.2 Acesse a pasta
+
+```bash
 cd my-express-backend
 ```
 
-1.2 Inicie a estrutura inicial
+1.3 Inicie a estrutura inicial
 
-```bash
+```Bash
 npm init -y
 ```
 
 ## 2. Instale as dependências necessárias:
 
-```bash
+```Bash
 npm i express serverless-http @netlify/functions @types/express
 ```
 
 ## 3. Crie um arquivo de função Netlify para TypeScript ou JavaScript:
 
+**Detalhe:** neste arquivo contera as declarações de rotas a serem dimensionadas de acordo com sua necessidade e de acordo com tal ira ser acessivel em : **_https://url_projeto/api/SuaFunção_**
 Crie em o arquivo _api.ts_ ==> **"/netlify/functions/api.ts"** com os dados abaixo:
 
 ```Javascript
@@ -68,6 +74,7 @@ Crie o arquivo denominado _netlify.toml_ no diretorio _raiz_ do projeto e coloqu
 ## 5. Implante o aplicativo Express no Netlify:
 
 - Faça commit do código no Git.
+- Use o .gitignore para evitar subir arquivos node_modules
 - Crie um repositório no GitHub ou em outro serviço de hospedagem.
 - Conecte seu repositório ao Netlify para acionar implantações automáticas.
 
@@ -75,7 +82,9 @@ Crie o arquivo denominado _netlify.toml_ no diretorio _raiz_ do projeto e coloqu
 
 - As rotas do backend agora estão disponíveis no Netlify, por exemplo:
 
-        /api/rota_definida
+  ```Bash
+  /api/rota_definida
+  ```
 
 - Você pode acessar essas rotas a partir de outros serviços ou ferramentas para testar ou integrar com o seu backend.
 - As rotas são definidas apatir do arquivo **_api.ts_** localizado em **/netlify/functions/api.ts**
