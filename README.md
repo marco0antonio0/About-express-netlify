@@ -6,106 +6,112 @@
 
 A Netlify é uma plataforma de hospedagem e automação projetada para simplificar o desenvolvimento, implantação e gerenciamento de aplicativos web modernos. Funcionando como uma solução de PaaS (Platform as a Service), a Netlify oferece aos desenvolvedores uma abordagem fácil e eficiente para hospedar sites, aplicativos e funções serverless.
 
-## 1. Crie um novo projeto Express:
+# About-express-netlify
 
-1.1 crie a pasta
+This project demonstrates how to set up a basic Express.js server and deploy it on Netlify using serverless functions. Follow the steps below to implement this model.
 
-```bash
-mkdir my-express-backend
-```
+## Table of Contents
 
-1.2 Acesse a pasta
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Additional Resources](#additional-resources)
 
-```bash
-cd my-express-backend
-```
+## Prerequisites
 
-1.3 Inicie a estrutura inicial
+Before you begin, ensure you have the following installed:
 
-```Bash
-npm init -y
-```
+- [Node.js](https://nodejs.org/) (v14 or later)
+- [npm](https://www.npmjs.com/) (v6 or later)
+- [Netlify CLI](https://docs.netlify.com/cli/get-started/)
 
-## 2. Instale as dependências necessárias:
+## Installation
 
-```Bash
-npm i express serverless-http @netlify/functions @types/express
-```
+1. **Clone the repository:**
 
-## 3. Crie um arquivo de função Netlify para TypeScript ou JavaScript:
+    ```sh
+    git clone https://github.com/marco0antonio0/About-express-netlify
+    cd About-express-netlify
+    ```
 
-**Detalhe:** neste arquivo contera as declarações de rotas a serem dimensionadas de acordo com sua necessidade e de acordo com tal ira ser acessivel em : **_https://url_projeto/api/SuaFunção_**
+2. **Install dependencies:**
 
-Crie em o arquivo _api.ts_
+    ```sh
+    npm install
+    ```
 
-```bash
-/netlify/functions/api.ts
-```
+## Configuration
 
-Cole os dados abaixo no diretorio especificado:
+1. **Create netlify.toml file:**
 
-```Javascript
+    ```sh
+    [functions]
+        external_node_modules = ["express"]
+        node_bundler = "esbuild"
 
-import express, { Router } from "express";
-import serverless from "serverless-http";
+    [[redirects]]
+        force = true
+        from = "/api/*"
+        status = 200
+        to = "/.netlify/functions/api/:splat"
 
-const api = express();
+    [build]
+        command = "echo Building Functions"
+    ```
 
-const router = Router();
-//===============================================================
-//  Rotas a serem planejadas
+2. **Create netlify/functions/api.js file:**
 
-router.get("/hello", (req, res) => res.send("Hello World!"));
+    ```sh
+        import express, { Router } from "express";
+        import serverless from "serverless-http";
 
-api.use("/api/", router);
+        const api = express();
 
-// n_rotas . . .
-//===============================================================
+        const router = Router();
+        router.get("/hello", (req, res) => res.send("Hello World!"));
 
-export const handler = serverless(api);
+        api.use("/api/", router);
 
-```
+        export const handler = serverless(api);
 
-## 4. Adicione a configuração no netlify.toml:
+    ```
 
-Crie o arquivo denominado _netlify.toml_ no diretorio _raiz_ do projeto e coloque os dados abaixo:
+3. **Ensure your package.json includes the necessary dependencies:**
 
-```
-  <!-- ========================================================= -->
-[functions]
-  <!-- declara o pacote externo necessario para usar no servidor -->
-  external_node_modules = ["express"]
-  <!-- empacotador de funções netlify -->
-  node_bundler = "esbuild"
-  <!-- ========================================================= -->
-[[redirects]]
-  <!-- Redireciona as rotas para /api/ * -->
-  force = true
-  from = "/api/*"
-  status = 200
-  to = "/.netlify/functions/api/:splat"
-  <!-- ========================================================= -->
-[build]
-    <!-- Builda a função para registro de logs no netlify -->
-  command = "echo Building Functions"
-```
+    ```sh
+        {
+        "name": "example_project",
+        "version": "1.0.0",
+        "main": "index.js",
+        "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "keywords": [],
+        "author": "",
+        "license": "ISC",
+        "description": "",
+        "dependencies": {
+            "@netlify/functions": "^2.7.0",
+            "@types/express": "^4.17.21",
+            "express": "^4.19.2",
+            "serverless-http": "^3.2.0"
+                }
+        }
+    ```
 
-## 5. Implante o aplicativo Express no Netlify:
+## Usage
 
-- Faça commit do código no Git.
-- Use o .gitignore para evitar subir arquivos node_modules
-- Crie um repositório no GitHub ou em outro serviço de hospedagem.
-- Conecte seu repositório ao Netlify para acionar implantações automáticas.
+Once deployed, you can access your Express.js API through the Netlify URL. For example, if your Netlify site is <https://yoursite.netlify.app>, you can access the API endpoint at:
 
-## 6. Acesse suas rotas do backend:
-
-- As rotas do backend agora estão disponíveis no Netlify, por exemplo:
-
-  ```Bash
-  /api/rota_definida
+  ```sh
+  https://yoursite.netlify.app/api/hello
   ```
 
-- Você pode acessar essas rotas a partir de outros serviços ou ferramentas para testar ou integrar com o seu backend.
-- As rotas são definidas apatir do arquivo **_api.ts_** localizado em **/netlify/functions/api.ts**
+This should return Hello World!.
 
-Documentação oficial acesse [netlify docs](https://docs.netlify.com/integrations/frameworks/express/)
+## Additional Resources
+
+For more detailed information on deploying Express.js applications with Netlify, visit the Netlify [documentation](https://docs.netlify.com/frameworks/express/).
+
+This README provides a comprehensive guide on how to set up, configure, and deploy an Express.js server on Netlify. It includes step-by-step instructions, making it easy for users to follow and implement the project.
