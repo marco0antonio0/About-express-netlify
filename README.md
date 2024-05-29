@@ -18,6 +18,20 @@ This project demonstrates how to set up a basic Express.js server and deploy it 
 - [Usage](#usage)
 - [Additional Resources](#additional-resources)
 
+## Structure project setup
+
+```plaintext
+project/
+│
+├── netlify/
+│   └── functions/
+│       └── api.js
+│
+├── package.json
+├── netlify.toml
+└── node_modules/
+```
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
